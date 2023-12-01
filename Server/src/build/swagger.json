@@ -1,0 +1,196 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "REST API CIIT",
+        "description": "<html><body></body></html>",
+        "license": {
+            "name": "MIT",
+            "url": "https://opensource.org/licenses/MIT"
+        }
+    },
+    "host": "localhost:3000",
+    "basePath": "",
+    "tags": [
+        {
+            "name": "conecta",
+            "description": "API para conectar con el formulario"
+        }
+    ],
+    "schemes": [
+        "http"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/api/contacto/crearContacto": {
+            "post": {
+                "summary": "Conecta con el formulario",
+                "operationId": "crearContacto",
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "name": "contacto",
+                        "in": "body",
+                        "description": "contacto agregado",
+                        "required": true,
+                        "shema": {
+                            "$ref": "#/definitions/contacto"
+                        }
+                    }
+                ],
+                "tags": ["conecta"],
+                "responses": {
+                    "200": {
+                        "description": "contacto agregado",
+                        "schema": {
+                            "$ref": "#/definitions/contacto"
+                        }
+                    },
+                    "400": {
+                        "description": "Error al agregar contacto"
+                    }
+                },
+                "description": "Conecta con el formulario"
+            }
+        },
+        "/api/contacto/mostrarContactos": {
+            "get": {
+                "summary": "Muestra los contactos",
+                "operationId": "mostrarContactos",
+                "produces": ["application/json"],
+                "tags": ["conecta"],
+                "responses": {
+                    "200": {
+                        "description": "contactos",
+                        "schema": {
+                            "$ref": "#/definitions/contacto"
+                        }
+                    },
+                    "400": {
+                        "description": "Error al mostrar contactos"
+                    }
+                },
+                "description": "Muestra los contactos"
+            }
+        },
+        "/api/contacto/eliminarContacto/{id}": {
+            "delete": {
+                "tags": ["conecta"],
+                "summary": "Elimina un contacto",
+                "description": "Elimina un contacto",
+                "responses": {
+                    "200": {
+                        "description": "contacto eliminado",
+                        "schema": {
+                            "$ref": "#/definitions/contacto"
+                        }
+                    },
+                    "400": {
+                        "description": "Error al eliminar contacto"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id del contacto",
+                        "required": true,
+                        "type": "number",
+                        "shema": {
+                            "$ref": "#/definitions/contacto"
+                        }
+                    }
+                ]
+            }
+        },
+        "/api/contacto/actualizarContacto/{id}": {
+            "put": {
+                "summary": "Actualiza un contacto",
+                "operationId": "actualizarContacto",
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id del contacto",
+                        "required": true,
+                        "shema": {
+                            "$ref": "#/definitions/contacto"
+                        }
+                    }
+                ],
+                "tags": ["conecta"],
+                "responses": {
+                    "200": {
+                        "description": "contacto actualizado",
+                        "schema": {
+                            "$ref": "#/definitions/contacto"
+                        }
+                    },
+                    "400": {
+                        "description": "Error al actualizar contacto"
+                    }
+                },
+                "description": "Actualiza un contacto"
+            }
+        },
+        "/api/contacto/buscarContacto/{id}": {
+            "get": {
+                "summary": "Busca un contacto",
+                "operationId": "buscarContacto",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id del contacto",
+                        "required": true,
+                        "shema": {
+                            "$ref": "#/definitions/contacto"
+                        }
+                    }
+                ],
+                "tags": ["conecta"],
+                "responses": {
+                    "200": {
+                        "description": "contacto encontrado",
+                        "schema": {
+                            "$ref": "#/definitions/contacto"
+                        }
+                    },
+                    "400": {
+                        "description": "Error al buscar contacto"
+                    }
+                },
+                "description": "Busca un contacto"
+            }
+        }
+    },
+    "definitions": {
+        "contacto": {
+            "type": "object",
+            "propierties": {
+                "id": {
+                    "type": "integer",
+                    "description": "id del contacto"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "nombre del contacto"
+                },
+                "email": {
+                    "type": "string",
+                    "description": "email del contacto"
+                },
+                "mensaje": {
+                    "type": "string",
+                    "description": "mensaje del contacto"
+                }
+            }
+        }
+    }
+}
